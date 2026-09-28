@@ -296,7 +296,7 @@ h1 .muted, h2 .muted { display: block; }
 .card > .note { margin-top: .75rem; font-size: .8125rem; }
 .card-img {
   display: block; width: calc(100% + 3rem); max-width: none; height: auto; margin: -1.5rem -1.5rem 1.25rem;
-  aspect-ratio: 3 / 2; object-fit: cover; border-radius: 18px 18px 0 0;
+  aspect-ratio: 4 / 3; object-fit: cover; border-radius: 18px 18px 0 0;
 }
 .card-img-logos { object-fit: contain; padding: .75rem 2.5rem; background: var(--white); border-bottom: 1px solid var(--line); }
 @media (min-width: 640px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
@@ -533,7 +533,7 @@ h1 .muted, h2 .muted { display: block; }
   box-shadow: 0 24px 48px -24px rgba(0, 30, 15, .45);
 }
 .pg-item img {
-  position: absolute; top: 0; left: -9%; width: 118%; max-width: none; height: 100%; object-fit: cover;
+  position: absolute; top: -3%; left: -3%; width: 106%; max-width: none; height: 106%; object-fit: cover;   /* só 3% de sobra para o parallax */
   transform: translate3d(var(--px, 0px), 0, 0); user-select: none; -webkit-user-drag: none;
 }
 .pgallery.is-enhanced { overflow: hidden; cursor: grab; touch-action: pan-y; user-select: none; }
@@ -607,7 +607,7 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
   .stack-num { margin-bottom: .75rem; }
   .stack-card h3 { font-size: 1.75rem; margin-bottom: .6rem; }
   .stack-card p { font-size: 1rem; }
-  .stack-media img { aspect-ratio: 16 / 10; border-radius: 14px; }
+  .stack-media img { aspect-ratio: 4 / 3; border-radius: 14px; }
   .stack-media figcaption { margin-top: .5rem; }
 }
 
@@ -660,7 +660,9 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
    --hp (0 → 1) definido em script.js. "translate" e "filter: opacity" são propriedades
    separadas de transform/opacity, então não interferem na animação de entrada. */
 .hero { --hp: 0; }
-.hero-media { transform: translateX(-50%) translate3d(0, calc(var(--hp) * 42%), 0) scale(calc(1 + var(--hp) * .25)); transform-origin: 50% 0; }
+.hero-media { transform: translateX(-50%) translate3d(0, calc(var(--hp) * 42%), 0); }
+/* o zoom fica no vídeo, dentro do quadro (overflow: hidden): não alarga a página */
+.hero-video { transform: scale(calc(1 + var(--hp) * .25)); transform-origin: 50% 0; }
 .hero h1 { translate: 0 calc(var(--hp) * -34vh); filter: opacity(calc(1 - var(--hp) * 1.6)); }
 .hero .lead { translate: 0 calc(var(--hp) * -16vh); filter: opacity(calc(1 - var(--hp) * 1.4)); }
 .hero .hero-actions { translate: 0 calc(var(--hp) * -9vh); }
@@ -674,5 +676,100 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-media { transform: translateX(-50%); }
+  .hero-video { transform: none; }
   .hero h1, .hero .lead, .hero .hero-actions, .hero-stat { translate: none; filter: none; }
+}
+
+/* ---------- Reserva de vaga antecipada (Casa Vereda) ---------- */
+.btn-mint { background: var(--mint); color: var(--green-900); }
+.btn-mint:hover { background: #d5e8dc; }
+.btn-icon-line { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* destaque no card de mensalistas */
+.reserve-callout {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem; width: 100%;
+  padding: .9rem 1.1rem; border-radius: 16px; background: var(--mint); color: var(--green-900);
+  text-decoration: none; transition: background-color .2s;
+}
+.reserve-callout:hover { background: #d5e8dc; }
+.reserve-callout-text { display: grid; gap: .1rem; }
+.reserve-callout-text strong { font-weight: 600; }
+.reserve-callout-text span { font-size: .875rem; color: #3f5a4a; }
+.reserve-callout-arrow {
+  display: grid; place-items: center; flex: none; width: 36px; height: 36px; border-radius: 50%;
+  background: var(--green-900); color: var(--white); font-weight: 600;
+}
+
+/* janela */
+.modal {
+  width: min(460px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0;
+  border: 0; border-radius: 24px; background: var(--white); color: var(--ink);
+  box-shadow: 0 30px 80px -20px rgba(0, 30, 14, .5); overflow: auto;
+}
+.modal::backdrop { background: rgba(0, 22, 10, .6); backdrop-filter: blur(4px); }
+.modal[open] { animation: modal-in .35s var(--ease); }
+@keyframes modal-in { from { opacity: 0; transform: translateY(16px) scale(.98); } }
+.modal-card { position: relative; display: grid; gap: .875rem; padding: clamp(1.5rem, 5vw, 2.25rem); }
+.modal-card > p { margin: 0; color: var(--ink-soft); }
+.modal-card h2 { font-size: clamp(1.625rem, 4vw, 2rem); letter-spacing: -0.035em; line-height: 1.1; }
+.modal-logo { width: 120px; height: auto; margin-bottom: .25rem; }
+.modal-card .modal-tag { font-size: .875rem; font-weight: 600; color: var(--green-700); }
+.modal-card .btn { margin-top: .5rem; }
+.modal-card .modal-note { font-size: .8125rem; text-align: center; }
+.modal-close {
+  position: absolute; top: 12px; right: 12px; display: grid; place-items: center;
+  width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--tint); color: var(--ink); cursor: pointer;
+}
+.modal-close svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; }
+@media (prefers-reduced-motion: reduce) { .modal[open] { animation: none; } }
+
+/* página /reserva */
+.page-reserve .header-pill { padding-right: 6px; }
+.reserve { display: grid; gap: 2.5rem; padding-top: clamp(120px, 14vw, 170px); }
+.reserve h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: .98; letter-spacing: -0.05em; }
+.reserve-tag { margin: 0 0 1rem; font-size: .875rem; font-weight: 600; color: var(--green-700); }
+.reserve-steps { margin: 2rem 0 0; padding: 0; list-style: none; counter-reset: passo; display: grid; gap: .9rem; }
+.reserve-steps li { counter-increment: passo; position: relative; padding-left: 2.6rem; min-height: 28px; color: var(--ink-soft); }
+.reserve-steps li::before {
+  content: counter(passo); position: absolute; left: 0; top: -1px; display: grid; place-items: center; width: 28px; height: 28px;
+  border-radius: 50%; background: var(--green-900); color: var(--white); font-size: .8125rem; font-weight: 600;
+}
+.reserve-steps strong { color: var(--ink); font-weight: 600; }
+.reserve-place {
+  display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1rem 1.25rem;
+  border-radius: 18px; background: var(--tint);
+}
+.reserve-place img { width: 96px; height: auto; flex: none; }
+.reserve-place p { margin: 0; font-weight: 600; font-size: .9375rem; }
+.reserve-place span { font-weight: 400; color: var(--ink-soft); }
+
+.reserve-form {
+  display: grid; gap: 1rem; align-content: start; padding: clamp(1.25rem, 4vw, 2rem);
+  border-radius: 24px; background: var(--white); box-shadow: var(--shadow);
+}
+.field { display: grid; gap: .4rem; min-width: 0; }
+.field label { font-size: .875rem; font-weight: 600; }
+.field .optional { font-weight: 400; color: var(--ink-soft); }
+.field input, .field textarea {
+  width: 100%; min-height: 48px; padding: .7rem .9rem; border: 1.5px solid var(--line); border-radius: 12px;
+  background: var(--white); color: var(--ink); font: 400 1rem var(--font);    /* 16px evita zoom no iPhone */
+  transition: border-color .2s, box-shadow .2s;
+}
+.field textarea { resize: vertical; }
+.field input:focus, .field textarea:focus { outline: none; border-color: var(--green-700); box-shadow: 0 0 0 3px rgba(0, 103, 56, .15); }
+.field input:user-invalid { border-color: #c0392b; }
+.field-row { display: grid; gap: 1rem; }
+@media (min-width: 560px) { .field-row { grid-template-columns: 1fr 1fr; } }
+.check { display: flex; gap: .75rem; align-items: flex-start; font-size: .9375rem; color: var(--ink-soft); cursor: pointer; }
+.check input { flex: none; width: 22px; height: 22px; margin: 1px 0 0; accent-color: var(--green-700); }
+.form-error { margin: 0; padding: .7rem .9rem; border-radius: 12px; background: #fdecea; color: #8e2a1f; font-size: .9375rem; font-weight: 600; }
+.form-error[hidden], .form-done[hidden] { display: none; }
+.form-note { margin: 0; font-size: .8125rem; color: var(--ink-soft); text-align: center; }
+.form-done { padding: .9rem 1rem; border-radius: 12px; background: var(--mint); color: var(--green-900); }
+.form-done p { margin: 0; }
+.page-reserve .site-footer { padding-block: 2rem; }
+.page-reserve .footer-bottom { margin: 0; }
+@media (min-width: 960px) {
+  .reserve { grid-template-columns: 1fr 1.05fr; gap: 4rem; align-items: start; }
+  .reserve-intro { position: sticky; top: 120px; }
 }

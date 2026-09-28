@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Reserva de vaga antecipada · Casa Vereda | Rede Atlas Park</title>
+  <meta name="description" content="Solicite com antecedência sua vaga no estacionamento Atlas Park da Casa Vereda, no Belvedere, em Belo Horizonte.">
+  <meta name="theme-color" content="#004520">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-reserve">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="header-pill">
+      <a class="brand" href="./" aria-label="Rede Atlas Park, página inicial">
+        <img src="assets/logo-atlas-park-300.png" alt="Atlas Park" width="96" height="40">
+      </a>
+      <a class="btn btn-light btn-sm reserve-back" href="./#mensalistas">← Voltar ao site</a>
+    </div>
+  </header>
+
+  <div class="page">
+    <main id="conteudo" class="band section reserve">
+      <div class="reserve-intro">
+        <p class="reserve-tag">Casa Vereda · Belvedere, BH</p>
+        <h1><span class="muted">Reserva de vaga</span> antecipada.</h1>
+        <p class="section-text">
+          Vai a um evento na Casa Vereda? Solicite sua vaga no estacionamento Atlas Park com antecedência.
+          Preencha o formulário e envie o pedido pelo WhatsApp.
+        </p>
+
+        <ol class="reserve-steps">
+          <li><strong>Preencha</strong> os dados do evento e do veículo.</li>
+          <li><strong>Envie</strong> o pedido: o WhatsApp abre com a mensagem pronta.</li>
+          <li><strong>Aguarde a confirmação</strong> da equipe da unidade.</li>
+        </ol>
+
+        <div class="reserve-place">
+          <img src="assets/unidades/casa-vereda.svg" alt="Logo Casa Vereda" width="120" height="53">
+          <p>Atlas Park Casa Vereda<br><span>Rua Maria Luiza Santiago, 25 · Belvedere, Belo Horizonte/MG</span></p>
+        </div>
+      </div>
+
+      <form class="reserve-form" id="reserva-form" novalidate>
+        <h2 class="sr-only">Dados da reserva</h2>
+
+        <div class="field">
+          <label for="r-nome">Nome completo</label>
+          <input id="r-nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="r-tel">Telefone / WhatsApp</label>
+            <input id="r-tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(31) 90000-0000" required>
+          </div>
+          <div class="field">
+            <label for="r-email">E-mail <span class="optional">(opcional)</span></label>
+            <input id="r-email" name="email" type="email" autocomplete="email">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="r-data">Data do evento</label>
+            <input id="r-data" name="data" type="date" required>
+          </div>
+          <div class="field">
+            <label for="r-hora">Chegada prevista</label>
+            <input id="r-hora" name="hora" type="time" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="r-evento">Nome do evento <span class="optional">(opcional)</span></label>
+            <input id="r-evento" name="evento" type="text">
+          </div>
+          <div class="field">
+            <label for="r-placa">Placa do veículo <span class="optional">(opcional)</span></label>
+            <input id="r-placa" name="placa" type="text" autocapitalize="characters" maxlength="8" placeholder="ABC1D23">
+          </div>
+        </div>
+        <div class="field">
+          <label for="r-obs">Observações <span class="optional">(opcional)</span></label>
+          <textarea id="r-obs" name="obs" rows="3"></textarea>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="ciente" required>
+          <span>Estou ciente de que a vaga só fica reservada após a confirmação da unidade.</span>
+        </label>
+
+        <p class="form-error" role="alert" hidden></p>
+
+        <button class="btn btn-dark btn-lg btn-block" type="submit">
+          <svg class="btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 3.5A11.8 11.8 0 0 0 1.9 17.6L.5 23.5l6-1.5A11.8 11.8 0 0 0 20.5 3.5zM12 21.6a9.7 9.7 0 0 1-5-1.4l-.3-.2-3.6.9 1-3.5-.2-.4a9.7 9.7 0 1 1 8.1 4.6zm5.3-7.2c-.3-.2-1.7-.9-2-1s-.5-.1-.7.2l-.9 1.1c-.2.2-.3.2-.6.1a8 8 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.1 1.1 0 0 0-.8.4 3.4 3.4 0 0 0-1 2.5 5.9 5.9 0 0 0 1.2 3.1 13.4 13.4 0 0 0 5.2 4.6c1.9.8 2.7.9 3.6.7a3.1 3.1 0 0 0 2-1.4 2.5 2.5 0 0 0 .2-1.4c-.1-.2-.3-.3-.6-.4z"/></svg>
+          Enviar pedido pelo WhatsApp
+        </button>
+        <p class="form-note">Os dados não ficam salvos no site: eles vão direto na mensagem de WhatsApp para a equipe Atlas Park.</p>
+
+        <div class="form-done" hidden>
+          <p><strong>Pedido pronto!</strong> Se o WhatsApp não abriu sozinho, <a data-wa-fallback href="#" target="_blank" rel="noopener">toque aqui para enviar</a>.</p>
+        </div>
+      </form>
+    </main>
+
+    <footer class="site-footer band">
+      <p class="footer-bottom">© <span data-year>2026</span> Rede Atlas Park · <a href="./">redeatlaspark.com.br</a></p>
+    </footer>
+  </div>
+
+  <script src="reserva.js" defer></script>
+</body>
+</html>

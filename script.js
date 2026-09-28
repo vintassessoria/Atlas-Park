@@ -293,6 +293,7 @@
     const cardWaze = unitsBox.querySelector('[data-card-waze]');
     const cardMaps = unitsBox.querySelector('[data-card-maps]');
     const cardContact = unitsBox.querySelector('[data-card-contact]');
+    const cardReserve = unitsBox.querySelector('[data-card-reserve]');
     const street = unitsBox.querySelector('.units-street');
     const backBtn = unitsBox.querySelector('.units-back');
     let diveId = 0;
@@ -379,6 +380,7 @@
       if (cardMaps) cardMaps.href = `https://www.google.com/maps/search/?api=1&query=${q}`;
       setLogo(unit);
       if (cardContact) cardContact.hidden = unit.dataset.contact !== 'df';   // atendimento próprio de Brasília
+      if (cardReserve) cardReserve.hidden = !unit.dataset.reserve;           // reserva antecipada (Casa Vereda)
       if (!globe) return;
       // zoom do globo até a cidade e, ao chegar, o mapa de ruas do endereço
       const id = ++diveId;
@@ -444,7 +446,7 @@
         const d = Math.abs(center - boxW / 2);
         if (d < bestD) { bestD = d; best = g.el; }
         if (center < -g.w || center > boxW + g.w) continue;          // fora da tela
-        const shift = ((center - boxW / 2) / boxW) * -g.w * 0.16;
+        const shift = Math.max(-0.028, Math.min(0.028, ((center - boxW / 2) / boxW) * -0.06)) * g.w;   // dentro da sobra de 3%
         g.img.style.setProperty('--px', `${shift.toFixed(1)}px`);
       }
       // no toque (sem mouse), a foto mais próxima do centro fica colorida
@@ -566,6 +568,23 @@
       }).observe(hero);
     }
   }
+
+  // ---------- Janelas (reserva antecipada) ----------
+  // Sem suporte a <dialog>, o link segue direto para a página de reserva.
+  document.querySelectorAll('[data-modal-open]').forEach((opener) => {
+    const modal = document.getElementById(opener.dataset.modalOpen);
+    if (!modal || typeof modal.showModal !== 'function') return;
+    opener.addEventListener('click', (e) => {
+      e.preventDefault();
+      modal.showModal();
+      modal.returnFocusTo = opener;
+    });
+  });
+  document.querySelectorAll('dialog.modal').forEach((modal) => {
+    modal.querySelectorAll('[data-modal-close]').forEach((b) => b.addEventListener('click', () => modal.close()));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.close(); });   // clique fora do cartão
+    modal.addEventListener('close', () => { if (modal.returnFocusTo) modal.returnFocusTo.focus(); });
+  });
 
   // ---------- Ano no rodapé ----------
   const year = document.querySelector('[data-year]');
