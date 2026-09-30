@@ -799,3 +799,54 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
 @media (min-width: 860px) {
   .site-header { width: min(100% - 24px, 900px); }
 }
+
+/* ---------- Trabalhe conosco ---------- */
+.field select {
+  width: 100%; min-height: 48px; padding: .7rem 2.4rem .7rem .9rem; border: 1.5px solid var(--line); border-radius: 12px;
+  background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230d1a12' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") right .8rem center / 16px no-repeat;
+  color: var(--ink); font: 400 1rem var(--font); appearance: none; -webkit-appearance: none; cursor: pointer;
+}
+.field select:focus { outline: none; border-color: var(--green-700); box-shadow: 0 0 0 3px rgba(0, 103, 56, .15); }
+.chips-field { margin: 0; padding: 0; border: 0; min-width: 0; }
+.chips-field legend { padding: 0; margin-bottom: .4rem; font-size: .875rem; font-weight: 600; }
+.chip-options { display: flex; flex-wrap: wrap; gap: .5rem; }
+.chip-option { position: relative; cursor: pointer; }
+.chip-option input { position: absolute; opacity: 0; width: 1px; height: 1px; }
+.chip-option span {
+  display: inline-flex; align-items: center; min-height: 44px; padding: 0 1rem; border-radius: 999px;
+  border: 1.5px solid var(--line); background: var(--white); font-size: .9375rem; font-weight: 500;
+  transition: background-color .2s, border-color .2s, color .2s;
+}
+.chip-option input:checked + span { background: var(--green-900); border-color: var(--green-900); color: var(--white); }
+.chip-option input:focus-visible + span { outline: 3px solid var(--green-700); outline-offset: 2px; }
+.form-done { display: grid; gap: .6rem; }
+.form-done-alt { font-size: .875rem; overflow-wrap: anywhere; }
+.form-done-actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.form-done-actions .btn { min-height: 44px; }
+.jobs-photo { margin: 2rem 0 0; }
+.jobs-photo img { width: 100%; height: auto; border-radius: 20px; }
+@media (max-width: 959.98px) { .jobs-photo { display: none; } }
+
+/* chamada na seção de contato */
+.jobs-callout {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  max-width: 1000px; margin: 1rem auto 0; padding: 1.1rem 1.4rem; border-radius: 20px;
+  background: var(--white); box-shadow: var(--shadow); color: var(--ink); text-decoration: none;
+}
+.jobs-callout-text { display: grid; gap: .15rem; }
+.jobs-callout-text strong { font-weight: 600; }
+.jobs-callout-text span { font-size: .9375rem; color: var(--ink-soft); }
+.jobs-callout-arrow {
+  display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%;
+  background: var(--green-900); color: var(--white); font-weight: 600; transition: transform .2s;
+}
+@media (hover: hover) { .jobs-callout:hover .jobs-callout-arrow { transform: translateX(3px); } }
+
+/* menu: no computador só cabe em telas largas */
+@media (min-width: 860px) and (max-width: 1279.98px) { .main-nav .nav-jobs-item { display: none; } }
+@media (min-width: 1280px) { .site-header { width: min(100% - 24px, 1040px); } }
+
+/* Botões do hero podem quebrar linha em telas estreitas (textos longos não alargam a página) */
+@media (max-width: 599.98px) {
+  .hero-actions .btn { white-space: normal; text-wrap: balance; line-height: 1.25; padding-block: .6rem; }
+}

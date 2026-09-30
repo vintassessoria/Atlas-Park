@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Trabalhe conosco | Rede Atlas Park</title>
+  <meta name="description" content="Quer trabalhar na Rede Atlas Park? Envie seus dados e currículo para a nossa equipe.">
+  <meta name="theme-color" content="#004520">
+  <link rel="icon" type="image/png" sizes="48x48" href="assets/favicon-48.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="page-reserve page-jobs">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <div class="header-pill">
+      <a class="brand" href="./" aria-label="Rede Atlas Park, página inicial">
+        <img src="assets/logo-atlas-park-300.png" alt="Atlas Park" width="96" height="40">
+      </a>
+      <a class="btn btn-light btn-sm reserve-back" href="./">← Voltar ao site</a>
+    </div>
+  </header>
+
+  <div class="page">
+    <main id="conteudo" class="band section reserve">
+      <div class="reserve-intro">
+        <p class="reserve-tag">Trabalhe conosco</p>
+        <h1><span class="muted">Faça parte da</span> Rede Atlas Park.</h1>
+        <p class="section-text">
+          Envie seus dados e seu currículo para a nossa equipe. As candidaturas são avaliadas conforme
+          as oportunidades nas unidades de Minas Gerais, do Distrito Federal e de São Paulo.
+        </p>
+
+        <ol class="reserve-steps">
+          <li><strong>Preencha</strong> seus dados e a área de interesse.</li>
+          <li><strong>Envie:</strong> seu e-mail abre com a mensagem pronta.</li>
+          <li><strong>Anexe o currículo</strong> (PDF) antes de enviar.</li>
+        </ol>
+
+        <figure class="jobs-photo">
+          <img src="assets/fotos/equipe-entrada-640.webp" srcset="assets/fotos/equipe-entrada-640.webp 640w, assets/fotos/equipe-entrada-1000.webp 1000w" sizes="(min-width: 960px) 40vw, 90vw" alt="Colaborador Atlas Park indicando a entrada do estacionamento" width="640" height="480" loading="lazy" decoding="async">
+        </figure>
+      </div>
+
+      <form class="reserve-form" id="trabalhe-form" novalidate>
+        <h2 class="sr-only">Dados da candidatura</h2>
+
+        <div class="field">
+          <label for="t-nome">Nome completo</label>
+          <input id="t-nome" name="nome" type="text" autocomplete="name" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="t-tel">Telefone / WhatsApp</label>
+            <input id="t-tel" name="telefone" type="tel" inputmode="tel" autocomplete="tel" placeholder="(31) 90000-0000" required>
+          </div>
+          <div class="field">
+            <label for="t-email">E-mail</label>
+            <input id="t-email" name="email" type="email" autocomplete="email" required>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="t-cidade">Cidade onde quer trabalhar</label>
+            <select id="t-cidade" name="cidade" required>
+              <option value="">Selecione</option>
+              <option>Belo Horizonte/MG</option>
+              <option>Contagem/MG</option>
+              <option>Nova Lima/MG</option>
+              <option>Brasília/DF</option>
+              <option>São Paulo/SP</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="t-area">Área de interesse</label>
+            <select id="t-area" name="area" required>
+              <option value="">Selecione</option>
+              <option>Atendimento e caixa</option>
+              <option>Operação de estacionamento</option>
+              <option>Manobrista</option>
+              <option>Limpeza e conservação</option>
+              <option>Manutenção</option>
+              <option>Administrativo</option>
+              <option>Outra</option>
+            </select>
+          </div>
+        </div>
+
+        <fieldset class="field chips-field">
+          <legend>Turnos disponíveis <span class="optional">(opcional)</span></legend>
+          <div class="chip-options">
+            <label class="chip-option"><input type="checkbox" name="turno" value="Manhã"><span>Manhã</span></label>
+            <label class="chip-option"><input type="checkbox" name="turno" value="Tarde"><span>Tarde</span></label>
+            <label class="chip-option"><input type="checkbox" name="turno" value="Noite"><span>Noite</span></label>
+            <label class="chip-option"><input type="checkbox" name="turno" value="Madrugada"><span>Madrugada</span></label>
+            <label class="chip-option"><input type="checkbox" name="turno" value="Fins de semana"><span>Fins de semana</span></label>
+          </div>
+        </fieldset>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="t-cnh">Possui CNH? <span class="optional">(opcional)</span></label>
+            <select id="t-cnh" name="cnh">
+              <option value="">Selecione</option>
+              <option>Não</option>
+              <option>Sim, categoria A</option>
+              <option>Sim, categoria B</option>
+              <option>Sim, categoria AB</option>
+              <option>Sim, outra categoria</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="t-link">LinkedIn <span class="optional">(opcional)</span></label>
+            <input id="t-link" name="linkedin" type="url" inputmode="url" placeholder="linkedin.com/in/seu-nome">
+          </div>
+        </div>
+        <div class="field">
+          <label for="t-msg">Conte um pouco sobre você <span class="optional">(opcional)</span></label>
+          <textarea id="t-msg" name="mensagem" rows="4" placeholder="Experiências anteriores, disponibilidade para início etc."></textarea>
+        </div>
+
+        <label class="check">
+          <input type="checkbox" name="consentimento" required>
+          <span>Autorizo o uso destes dados pela Rede Atlas Park para fins de recrutamento e seleção.</span>
+        </label>
+
+        <p class="form-error" role="alert" hidden></p>
+
+        <button class="btn btn-dark btn-lg btn-block" type="submit">
+          <svg class="btn-icon btn-icon-line" viewBox="0 0 24 24" aria-hidden="true"><rect x="2.5" y="4.5" width="19" height="15" rx="2.5"/><path d="M3.5 6.5l8.5 6.5 8.5-6.5"/></svg>
+          Enviar candidatura por e-mail
+        </button>
+        <p class="form-note">Os dados não ficam salvos no site: eles vão apenas na mensagem de e-mail para a equipe da Atlas Park.</p>
+
+        <div class="form-done" hidden>
+          <p><strong>Falta pouco:</strong> no e-mail que abriu, anexe seu currículo e toque em enviar.</p>
+          <p class="form-done-alt">
+            O e-mail não abriu? Envie para <strong data-mail-to></strong> com o assunto <strong data-mail-subject></strong>.
+          </p>
+          <div class="form-done-actions">
+            <button class="btn btn-light btn-sm" type="button" data-copy="to">Copiar e-mail</button>
+            <button class="btn btn-light btn-sm" type="button" data-copy="body">Copiar mensagem</button>
+          </div>
+        </div>
+      </form>
+    </main>
+
+    <footer class="site-footer band">
+      <p class="footer-bottom">© <span data-year>2026</span> Rede Atlas Park · <a href="./">redeatlaspark.com.br</a></p>
+    </footer>
+  </div>
+
+  <script src="trabalhe.js" defer></script>
+</body>
+</html>
