@@ -1,10 +1,13 @@
 (() => {
   // Candidatura: monta o e-mail e abre o aplicativo de e-mail (o site não guarda os dados)
-  const EMAIL = 'ouvidoria@redeatlaspark.com.br';
+  // Destino por região: Minas Gerais e São Paulo -> beppe@; Brasília (DF) -> ouvidoria@
+  const EMAIL_MG_SP = 'beppe@redeatlaspark.com.br';
+  const EMAIL_DF = 'ouvidoria@redeatlaspark.com.br';
+  const emailFor = (cidade) => (/\/DF$/.test(cidade) ? EMAIL_DF : EMAIL_MG_SP);
   const form = document.getElementById('trabalhe-form');
   const error = form.querySelector('.form-error');
   const done = form.querySelector('.form-done');
-  let last = { subject: '', body: '' };
+  let last = { to: EMAIL_MG_SP, subject: '', body: '' };
 
   const labelOf = (el) => {
     const l = form.querySelector(`label[for="${el.id}"]`);
@@ -45,18 +48,19 @@
       'Currículo em anexo.',
     ].filter((l) => l !== null).join('\n');
 
-    last = { subject, body };
-    done.querySelector('[data-mail-to]').textContent = EMAIL;
+    const to = emailFor(val('cidade'));
+    last = { to, subject, body };
+    done.querySelector('[data-mail-to]').textContent = to;
     done.querySelector('[data-mail-subject]').textContent = `"${subject}"`;
     done.hidden = false;
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   });
 
   // Plano B quando não há aplicativo de e-mail configurado
   done.querySelectorAll('[data-copy]').forEach((btn) => {
     const original = btn.textContent;
     btn.addEventListener('click', async () => {
-      const text = btn.dataset.copy === 'to' ? EMAIL : `Assunto: ${last.subject}\n\n${last.body}`;
+      const text = btn.dataset.copy === 'to' ? last.to : `Assunto: ${last.subject}\n\n${last.body}`;
       try { await navigator.clipboard.writeText(text); btn.textContent = 'Copiado!'; }
       catch { btn.textContent = 'Não foi possível copiar'; }
       setTimeout(() => { btn.textContent = original; }, 2000);
