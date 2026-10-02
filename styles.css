@@ -32,6 +32,7 @@
 @media (min-width: 768px) { :root { --gutter: 24px; } }
 
 *, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }   /* o atributo hidden sempre esconde, mesmo em .btn */
 
 html { scroll-behavior: smooth; scroll-padding-top: 96px; overflow-x: clip; }
 
