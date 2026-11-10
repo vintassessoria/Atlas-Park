@@ -1,6 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/reserva(.html)?",
+      "destination": "https://paymov.com.br/painel/atlaspark/Venda/ReservaDeVagas/5D60B277-9D08-4596-BD27-06C40CCE48DA",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(assets|vendor)/(.*)",

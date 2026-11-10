@@ -570,7 +570,7 @@
   }
 
   // ---------- Janelas (reserva antecipada) ----------
-  // Sem suporte a <dialog>, o link segue direto para a página de reserva.
+  // Sem suporte a <dialog>, o link segue para /reserva, que redireciona para a Paymov.
   document.querySelectorAll('[data-modal-open]').forEach((opener) => {
     const modal = document.getElementById(opener.dataset.modalOpen);
     if (!modal || typeof modal.showModal !== 'function') return;

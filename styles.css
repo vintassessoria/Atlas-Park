@@ -717,6 +717,7 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
 .modal-card .modal-tag { font-size: .875rem; font-weight: 600; color: var(--green-700); }
 .modal-card .btn { margin-top: .5rem; }
 .modal-card .modal-note { font-size: .8125rem; text-align: center; }
+.modal-card .modal-foot { font-size: .875rem; line-height: 1.5; }
 .modal-close {
   position: absolute; top: 12px; right: 12px; display: grid; place-items: center;
   width: 44px; height: 44px; border: 0; border-radius: 50%; background: var(--tint); color: var(--ink); cursor: pointer;
@@ -736,13 +737,6 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
   border-radius: 50%; background: var(--green-900); color: var(--white); font-size: .8125rem; font-weight: 600;
 }
 .reserve-steps strong { color: var(--ink); font-weight: 600; }
-.reserve-place {
-  display: flex; align-items: center; gap: 1rem; margin-top: 2rem; padding: 1rem 1.25rem;
-  border-radius: 18px; background: var(--tint);
-}
-.reserve-place img { width: 96px; height: auto; flex: none; }
-.reserve-place p { margin: 0; font-weight: 600; font-size: .9375rem; }
-.reserve-place span { font-weight: 400; color: var(--ink-soft); }
 
 .reserve-form {
   display: grid; gap: 1rem; align-content: start; padding: clamp(1.25rem, 4vw, 2rem);
@@ -860,7 +854,6 @@ body { padding-left: env(safe-area-inset-left); padding-right: env(safe-area-ins
   color: var(--green-900); font-size: .9375rem; line-height: 1.45;
 }
 .modal-only strong { font-weight: 600; }
-.reserve-intro .modal-only { margin-top: 1rem; max-width: 36rem; }
 /* barra do computador: mostra "Casa Vereda" ao lado de "Reserva de vaga" */
 @media (min-width: 860px) {
   .main-nav .nav-reserve small {
